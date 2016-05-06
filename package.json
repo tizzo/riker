@@ -1,0 +1,37 @@
+{
+  "name": "riker",
+  "version": "1.0.0",
+  "description": "Riker is an opinionated tool for building CLI interfaces in node.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "watch": "mocha -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tizzo/riker.git"
+  },
+  "keywords": [
+    "cli",
+    "parser",
+    "option",
+    "command"
+  ],
+  "author": "Howard Tyson <howard@howardtyson.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tizzo/riker/issues"
+  },
+  "homepage": "https://github.com/tizzo/riker#readme",
+  "devDependencies": {
+    "mocha": "^2.3.4",
+    "should": "^8.0.2"
+  },
+  "dependencies": {
+    "glob": "^6.0.3",
+    "window-size": "^0.2.0",
+    "wordwrap": "^1.0.0",
+    "yaml-config-loader": "^2.0.1",
+    "yargs": "^3.31.0"
+  }
+}

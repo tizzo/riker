@@ -1,0 +1,29 @@
+#! /usr/bin/env node
+'use strict';
+
+var Riker = require('../..');
+var Command = Riker.Command;
+
+var command = new Command();
+
+class Foo extends Command {
+  constructor() {
+    super();
+    this.output.writeLine('RUUUUUN!!!!!');
+    this.shortDescription = 'Short description placeholder';
+    this.help = 'Help placeholder';
+    this.input.pipe(this.output);
+  }
+  run(done) {
+    console.log('I was run!');
+    if (done) done();
+  }
+}
+
+var riker = new Riker();
+riker.addSubCommand('bar', Foo);
+var baz = new Command();
+baz.addSubCommand('bingo', Foo);
+riker.addSubCommand('baz', baz);
+riker.addSubCommand('help', new Riker.commands.Help());
+riker.run();
