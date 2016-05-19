@@ -9,21 +9,45 @@ var command = new Command();
 class Foo extends Command {
   constructor() {
     super();
-    this.output.writeLine('RUUUUUN!!!!!');
-    this.shortDescription = 'Short description placeholder';
-    this.help = 'Help placeholder';
-    this.input.pipe(this.output);
+    this.shortdescription = 'short description placeholder.';
+    this.help = 'help placeholder';
+    //this.input.pipe(this.output);
+  }
+  initialize() {
+    this.yargs.describe('page', 'how many pages are there?');
   }
   run(done) {
-    console.log('I was run!');
+    console.log('i was run!');
+    if (done) done();
+  }
+}
+
+class Bar extends Command {
+  constructor() {
+    super();
+    this.shortdescription = 'short description placeholder.';
+    this.help = 'help placeholder';
+    //this.input.pipe(this.output);
+  }
+  initialize() {
+    console.log('initing');
+    this.yargs.describe('ping-pong', 'how pings can we pong?');
+  }
+  run(done) {
+    console.log('i was run!');
     if (done) done();
   }
 }
 
 var riker = new Riker();
-riker.addSubCommand('bar', Foo);
+riker.addSubCommand('foo', new Bar());
+riker.addSubCommand('bar', new Foo());
 var baz = new Command();
-baz.addSubCommand('bingo', Foo);
+baz.shortDescription = 'This is baz.';
+baz.help = 'Baz knows about stuff…';
+baz.addSubCommand('bong', new Bar());
 riker.addSubCommand('baz', baz);
 riker.addSubCommand('help', new Riker.commands.Help());
-riker.run();
+riker.run(function() {
+  //console.log('command line run done');
+});
