@@ -28,7 +28,13 @@ class Bar extends Command {
     this.shortdescription = 'short description placeholder.';
     this.help = 'help placeholder';
     //this.input.pipe(this.output);
+    this.addParameter('ping-pong')
+      .describe('how pings are ponged!')
+      .alias('p')
+      .default('9')
+      .choices(['7', '8', '9']);
   }
+  /*
   initialize() {
     console.log('initing');
     this.yargs.describe('ping-pong', 'how pings can we pong?');
