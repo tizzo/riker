@@ -52,10 +52,14 @@ var riker = new Riker();
 riker.addSubCommand('foo', new Foo({shortDescription: 'Foo is da bomb'}));
 riker.addSubCommand('bar', new Bar({shortDescription: 'Bar is da bomb'}));
 var baz = new Riker.CommandCollection();
-//baz.shortDescription = 'This is baz.';
-//baz.help = 'Baz knows about stuff…';
-baz.addSubCommand('bong', new Bar());
-riker.addSubCommand('bot', new Foo());
+var bongBaz = new Bar();
+bongBaz.run = function(done) {
+  this.output.writeLine('boooooooong');
+  this.output.writeLine(this.args);
+};
+baz.addSubCommand('bong', bongBaz);
+baz.shortDescription = 'Perform baz related operations.';
+riker.addSubCommand('baz', baz);
 riker.run(function() {
   //console.log('command line run done');
 });
