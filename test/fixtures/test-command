@@ -11,6 +11,7 @@ class Foo extends Command {
     options = options || {}
     super(options);
     this.shortDescription = options.shortDescription || 'short description placeholder.';
+    this.help = options.help || 'help placeholder';
     this.help = 'help placeholder';
     //this.input.pipe(this.output);
   }
@@ -28,7 +29,7 @@ class Bar extends Command {
     options = options || {}
     super(options);
     this.shortDescription = options.shortDescription || 'short description placeholder.';
-    this.help = 'help placeholder';
+    this.help = options.help || 'help placeholder';
     //this.input.pipe(this.output);
     this.addParameter('ping-pong')
       .describe('how pings are ponged!')
@@ -52,12 +53,13 @@ var riker = new Riker();
 riker.addSubCommand('foo', new Foo({shortDescription: 'Foo is da bomb'}));
 riker.addSubCommand('bar', new Bar({shortDescription: 'Bar is da bomb'}));
 var baz = new Riker.CommandCollection();
-var bongBaz = new Bar();
-bongBaz.run = function(done) {
-  this.output.writeLine('boooooooong');
+var pongBaz = new Bar({shortDescription: 'Answers the question of "what rhymes with pong?"'});
+pongBaz.help = 'Answers the question of "what rhymes comes after ping?"';
+pongBaz.run = function(done) {
+  this.output.writeLine('pooooong');
   this.output.writeLine(this.args);
 };
-baz.addSubCommand('bong', bongBaz);
+baz.addSubCommand('pong', pongBaz);
 baz.shortDescription = 'Perform baz related operations.';
 riker.addSubCommand('baz', baz);
 riker.run(function() {
