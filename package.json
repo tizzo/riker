@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha",
-    "watch": "mocha -w"
+    "watch": "mocha -w",
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha"
   },
   "repository": {
     "type": "git",
@@ -24,8 +25,11 @@
   },
   "homepage": "https://github.com/tizzo/riker#readme",
   "devDependencies": {
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
     "mocha": "^2.3.4",
-    "should": "^8.0.2"
+    "should": "^8.0.2",
+    "sinon": "^1.17.4"
   },
   "dependencies": {
     "glob": "^6.0.3",

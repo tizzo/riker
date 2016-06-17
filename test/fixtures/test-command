@@ -19,7 +19,7 @@ class Foo extends Command {
     this.yargs.describe('page', 'how many pages are there?');
   }
   run(done) {
-    console.log('i was run!');
+    this.output.writeLine('foo was run');
     if (done) done();
   }
 }
