@@ -36,6 +36,6 @@
     "window-size": "^0.2.0",
     "wordwrap": "^1.0.0",
     "yaml-config-loader": "^2.0.1",
-    "yargs": "^3.31.0"
+    "yargs": "^5.0.0"
   }
 }

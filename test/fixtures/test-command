@@ -13,7 +13,10 @@ class Foo extends Command {
     this.shortDescription = options.shortDescription || 'short description placeholder.';
     this.help = options.help || 'help placeholder';
     this.help = 'help placeholder';
-    //this.input.pipe(this.output);
+    this.addParameter('sample')
+      .alias('s')
+      .describe('This is a sample parameter')
+      .default('true');
   }
   initialize() {
     this.yargs.describe('page', 'how many pages are there?');
