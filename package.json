@@ -1,35 +1,85 @@
 {
-  "name": "riker",
-  "version": "1.2.0",
-  "description": "Riker is an opinionated tool for building CLI interfaces in node.js.",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha",
-    "watch": "mocha -w",
-    "coverage": "istanbul cover ./node_modules/.bin/_mocha"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tizzo/riker.git"
-  },
-  "keywords": [
-    "cli",
-    "parser",
-    "option",
-    "command"
+  "_args": [
+    [
+      {
+        "raw": "git+ssh://git@github.com/tizzo/riker.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "git+ssh://git@github.com/tizzo/riker.git",
+        "spec": "git+ssh://git@github.com/tizzo/riker.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:tizzo/riker.git",
+          "sshUrl": "git+ssh://git@github.com/tizzo/riker.git",
+          "httpsUrl": "git+https://github.com/tizzo/riker.git",
+          "gitUrl": "git://github.com/tizzo/riker.git",
+          "shortcut": "github:tizzo/riker",
+          "directUrl": "https://raw.githubusercontent.com/tizzo/riker/master/package.json"
+        }
+      },
+      "/Users/htyson/Documents/Code/Node.js/builder"
+    ]
   ],
-  "author": "Howard Tyson <howard@howardtyson.com>",
-  "license": "MIT",
+  "_from": "git+ssh://git@github.com/tizzo/riker.git",
+  "_id": "riker@1.2.0",
+  "_inCache": true,
+  "_location": "/riker",
+  "_phantomChildren": {
+    "cliui": "3.2.0",
+    "decamelize": "1.2.0",
+    "get-caller-file": "1.0.2",
+    "inflight": "1.0.6",
+    "inherits": "2.0.3",
+    "lodash.assign": "4.2.0",
+    "minimatch": "3.0.4",
+    "once": "1.4.0",
+    "os-locale": "1.4.0",
+    "path-is-absolute": "1.0.1",
+    "read-pkg-up": "1.0.1",
+    "require-directory": "2.1.1",
+    "require-main-filename": "1.0.1",
+    "set-blocking": "2.0.0",
+    "string-width": "1.0.2",
+    "which-module": "1.0.0",
+    "window-size": "0.2.0",
+    "y18n": "3.2.1",
+    "yargs-parser": "3.2.0"
+  },
+  "_requested": {
+    "raw": "git+ssh://git@github.com/tizzo/riker.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "git+ssh://git@github.com/tizzo/riker.git",
+    "spec": "git+ssh://git@github.com/tizzo/riker.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:tizzo/riker.git",
+      "sshUrl": "git+ssh://git@github.com/tizzo/riker.git",
+      "httpsUrl": "git+https://github.com/tizzo/riker.git",
+      "gitUrl": "git://github.com/tizzo/riker.git",
+      "shortcut": "github:tizzo/riker",
+      "directUrl": "https://raw.githubusercontent.com/tizzo/riker/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+ssh://git@github.com/tizzo/riker.git#af23bc1773ab76e629886fcd11e207b5fa97a8f9",
+  "_shasum": "5c2394cd2410c3554462f4c8612ff9ba1cb5e6c8",
+  "_shrinkwrap": null,
+  "_spec": "git+ssh://git@github.com/tizzo/riker.git",
+  "_where": "/Users/htyson/Documents/Code/Node.js/builder",
+  "author": {
+    "name": "Howard Tyson",
+    "email": "howard@howardtyson.com"
+  },
   "bugs": {
     "url": "https://github.com/tizzo/riker/issues"
-  },
-  "homepage": "https://github.com/tizzo/riker#readme",
-  "devDependencies": {
-    "coveralls": "^2.11.9",
-    "istanbul": "^0.4.3",
-    "mocha": "^2.3.4",
-    "should": "^8.0.2",
-    "sinon": "^1.17.4"
   },
   "dependencies": {
     "glob": "^6.0.3",
@@ -37,5 +87,37 @@
     "wordwrap": "^1.0.0",
     "yaml-config-loader": "^2.0.1",
     "yargs": "^5.0.0"
-  }
+  },
+  "description": "Riker is an opinionated tool for building CLI interfaces in node.js.",
+  "devDependencies": {
+    "coveralls": "^2.11.9",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.3.4",
+    "should": "^8.0.2",
+    "sinon": "^1.17.4"
+  },
+  "gitHead": "af23bc1773ab76e629886fcd11e207b5fa97a8f9",
+  "homepage": "https://github.com/tizzo/riker#readme",
+  "keywords": [
+    "cli",
+    "parser",
+    "option",
+    "command"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "riker",
+  "optionalDependencies": {},
+  "readme": "# Riker\n\nRiker is an opinionated node.js cli library for handling the business of writing that makes it optimizes for composability,\ntestability, and unixy best practices. It is is designed to\n\n## Beliefs\n\n1. All code should be easily testable and tested, even command line scripts\n2. Dependency injection is a Good Idea™\n3. Configuration should be\n4. Streams are the one true Node.js abstraction\n\n## Why do we need yet another new CLI library?\n\nCommand line commands should be:\n\n1. 100% Testable\n2. Dependency injected\n3. Stream oriented\n4. Composable\n5. Configurable via files, environment variables, and command line options (and in that order)\n\n## But why is it called \"Riker\"?\n\nBecause the only thing that should ever come after \"[commander](http://npmjs.com/package/commander)\" is \"Riker\".\n\n![William T. Riker](http://media.boingboing.net/wp-content/uploads/2015/05/Riker.jpg)\n\n## Architecture\n\n  - Riker\n    - Main entry point\n    - Provides helpers for things like loading a directory of commands\n  - CommandCollection\n    - Is a collection of subcommands\n    - Resolves command aliases\n  - Command\n    -\n  - ShellCommand\n    - A class for wrapping another command\n\n## Usage\n\n### Creating a custom command.\n\n```` javascript\nvar Riker = require('riker');\nvar Command = Riker.Command;\n\nclass Cat extends Command {\n  constructor() {\n    super();\n    this.shortDescription = 'Sends any input to standard out';\n    this.help = 'This ';\n  }\n  configure(options) {\n    this.someOption = options.someOption;\n  }\n  run(done) {\n    this.input.pipe(this.output);\n    if (done) {\n      this.input.on('end', done);\n    }\n  }\n}\n````\n\n### Accepting\n\n```` javascript\nclass Cat extends Command {\n  constructor() {\n    super();\n  }\n}\n````\n\n### Creating a custom command with config parameters.\n\n```` javascript\nvar Riker = require('riker');\nvar Command = Riker.Command;\n\nclass Cat extends Command {\n  constructor() {\n    super();\n    this.shortDescription = '';\n    this.help = 'Help placeholder';\n    var parameter = this.addParameter('server.port');\n    parameter\n      .type(Number) // Defines the type - this will cast the type if necessary to ensure numbers, strings, etc are handled appropriately.\n      // Mappings\n      .default(80) // Provides a default value for this parameter.\n      .required() // Marks this parameter required, incompatible with `default`.\n      .describe('') // Provide help text related to this option, wrapped behavior from yargs.\n      .alias('p') // An alias for this command, wrapped behavior from yargs.\n    this.addParameter('protocol')\n      .alias('P')\n      .describe('Whether to listen use TLS.')\n      .default('http')\n      .choices(['http', 'https']) // Provide a set of allowable options.\n  }\n  configure(options) {\n    this.someOption = options.someOption;\n  }\n  run(done) {\n    this.input.pipe(this.output);\n    if (done) {\n      this.input.on('end', done);\n    }\n  }\n}\n````\n\n### Defining a cli script\n```` javascript\n#! /usr/bin/env node\nvar path = require('path');\nvar Riker = require('riker');\nvar riker = new Riker();\nvar Commands = riker.scanDirectory(path.resolve(path.join('.', 'cli-commands'));\nriker.run();\n````\n\n### Writing a unit test\n\nUnit testing our class by mocking input using through2 and should.\n```` javascript\ndescribe('Cat', function() {\n  it('should stream anything input to the output', function() {\n    var Cat = require('./Cat');\n    var through2 = require('through2');\n    var should = require('should');\n    var history = [];\n    var input = through2();\n    var output = through2(function(data, enc, cb) {\n      history.push(data);\n      cb(data);\n    })\n    var cat = new Cat({input, output})\n    output.on('end', function() {\n      history.length.should.equal(2);\n      history[0].should.equal('one');\n      history[1].should.equal('two');\n      done()l\n    });\n    input.write('one');\n    input.write('two');\n    input.write(null);\n  });\n}\n````\n\n\n```` javascript\nvar Riker = require('riker');\nvar Cat = require('./Cat');\nvar Command = Riker.Command;\n\nvar command = new Command();\n\nvar riker = new Riker();\nriker.addSubCommand('bar', new Foo());\nvar baz = new Command();\nbaz.shortDescription = 'This is baz.';\nbaz.help = 'Baz knows about stuff…';\nbaz.addSubCommand('bingo', new Foo());\nriker.addSubCommand('baz', baz);\nriker.addSubCommand('help', new Riker.commands.Help());\nriker.run(function() {\n  //console.log('command line run done');\n});\n\n\n````\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tizzo/riker.git"
+  },
+  "scripts": {
+    "coverage": "istanbul cover ./node_modules/.bin/_mocha",
+    "test": "mocha",
+    "watch": "mocha -w"
+  },
+  "version": "1.2.0"
 }
