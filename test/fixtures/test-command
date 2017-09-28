@@ -17,8 +17,12 @@ class Foo extends Command {
       .alias('s')
       .describe('This is a sample parameter')
       .default('true');
+    this.addParameter('other')
+      .required()
+      .describe('You must specify the other');
   }
   initialize() {
+    super.initialize();
     this.yargs.describe('page', 'how many pages are there?');
   }
   run(done) {
