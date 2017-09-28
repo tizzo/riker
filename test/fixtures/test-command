@@ -21,6 +21,12 @@ class Foo extends Command {
       .required()
       .describe('You must specify the other');
   }
+  configure(conf, done) {
+    super.configure(conf, (error) => {
+      console.log(conf.sample);
+      done(error);
+    });
+  }
   initialize() {
     super.initialize();
     this.yargs.describe('page', 'how many pages are there?');
@@ -44,14 +50,13 @@ class Bar extends Command {
       .default('9')
       .choices(['7', '8', '9']);
   }
-  /*
-  initialize() {
-    console.log('initing');
-    this.yargs.describe('ping-pong', 'how pings can we pong?');
+
+  configure(config, done) {
+    super.configure(config, done);
   }
-  // */
+
   run(config, done) {
-    console.log('i was run!');
+    this.output.writeLine('foo was run');
     if (done) done();
   }
 }
