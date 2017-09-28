@@ -5,9 +5,9 @@ testability, and unixy best practices. It is is designed to
 
 ## Beliefs
 
-1. All code should be easily testable and tested, even command line scripts
-2. Dependency injection is a Good Idea™
-3. Configuration should be
+1. All code should be easily testable and tested, even command line scripts.
+2. Dependency injection is a Good Idea™.
+3. Configuration should be injected and inherited
 4. Streams are the one true Node.js abstraction
 
 ## Why do we need yet another new CLI library?
@@ -24,7 +24,7 @@ Command line commands should be:
 
 Because the only thing that should ever come after "[commander](http://npmjs.com/package/commander)" is "Riker".
 
-![William T. Riker](http://media.boingboing.net/wp-content/uploads/2015/05/Riker.jpg)
+![William T. Riker](https://howardtyson.com/files/riker.jpg)
 
 ## Architecture
 
@@ -33,25 +33,24 @@ Because the only thing that should ever come after "[commander](http://npmjs.com
     - Provides helpers for things like loading a directory of commands
   - CommandCollection
     - Is a collection of subcommands
-    - Resolves command aliases
+    - Resolves command aliases and loads child commands
+    - Child commands can, themselves, be command collections
   - Command
-    -
-  - ShellCommand
-    - A class for wrapping another command
+    - Is an individual command
 
 ## Usage
 
 ### Creating a custom command.
 
 ```` javascript
-var Riker = require('riker');
-var Command = Riker.Command;
+const Riker = require('riker');
+const Command = Riker.Command;
 
 class Cat extends Command {
   constructor() {
     super();
     this.shortDescription = 'Sends any input to standard out';
-    this.help = 'This ';
+    this.help = 'This command streams input coming to standard in and pipes it to standard out.';
   }
   configure(options) {
     this.someOption = options.someOption;
@@ -64,35 +63,24 @@ class Cat extends Command {
   }
 }
 ````
-
-### Accepting
-
-```` javascript
-class Cat extends Command {
-  constructor() {
-    super();
-  }
-}
-````
-
 ### Creating a custom command with config parameters.
 
 ```` javascript
-var Riker = require('riker');
-var Command = Riker.Command;
+const Riker = require('riker');
+const Command = Riker.Command;
 
 class Cat extends Command {
   constructor() {
     super();
     this.shortDescription = '';
     this.help = 'Help placeholder';
-    var parameter = this.addParameter('server.port');
+    const parameter = this.addParameter('server.port');
     parameter
       .type(Number) // Defines the type - this will cast the type if necessary to ensure numbers, strings, etc are handled appropriately.
       // Mappings
       .default(80) // Provides a default value for this parameter.
       .required() // Marks this parameter required, incompatible with `default`.
-      .describe('') // Provide help text related to this option, wrapped behavior from yargs.
+      .describe('Specify the port.') // Provide help text related to this option, wrapped behavior from yargs.
       .alias('p') // An alias for this command, wrapped behavior from yargs.
     this.addParameter('protocol')
       .alias('P')
@@ -112,32 +100,22 @@ class Cat extends Command {
 }
 ````
 
-### Defining a cli script
-```` javascript
-#! /usr/bin/env node
-var path = require('path');
-var Riker = require('riker');
-var riker = new Riker();
-var Commands = riker.scanDirectory(path.resolve(path.join('.', 'cli-commands'));
-riker.run();
-````
-
 ### Writing a unit test
 
 Unit testing our class by mocking input using through2 and should.
 ```` javascript
 describe('Cat', function() {
   it('should stream anything input to the output', function() {
-    var Cat = require('./Cat');
-    var through2 = require('through2');
-    var should = require('should');
-    var history = [];
-    var input = through2();
-    var output = through2(function(data, enc, cb) {
+    const Cat = require('./Cat');
+    const through2 = require('through2');
+    const should = require('should');
+    const history = [];
+    const input = through2();
+    const output = through2(function(data, enc, cb) {
       history.push(data);
       cb(data);
     })
-    var cat = new Cat({input, output})
+    const cat = new Cat({input, output})
     output.on('end', function() {
       history.length.should.equal(2);
       history[0].should.equal('one');
@@ -151,6 +129,7 @@ describe('Cat', function() {
 }
 ````
 
+# Creating a set of subcommands in a command collection
 
 ```` javascript
 var Riker = require('riker');
