@@ -20,10 +20,13 @@ class Foo extends Command {
     this.addParameter('other')
       .required()
       .describe('You must specify the other');
+    this.addParameter('name')
+      .array()
+      .type('string')
+      .describe('A name to process, may be specified multiple times.');
   }
   configure(conf, done) {
     super.configure(conf, (error) => {
-      console.log(conf.sample);
       done(error);
     });
   }
