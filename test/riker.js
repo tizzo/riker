@@ -5,10 +5,13 @@ var should = require('should');
 describe('Riker', function() {
   it('should instantiate', function(done) {
     var commandCollection = {
-      run: function(cb) {
+      run: function(conf, cb) {
         cb();
       },
-      addSubCommand: function() {}
+      initialize: () => {},
+      addSubCommand: () => {},
+      getParsedOptions: () => {},
+      configure: (conf, done) => { done(); },
     };
     var riker = new Riker();
     riker.commandCollection.should.be.instanceOf(Riker.CommandCollection);
